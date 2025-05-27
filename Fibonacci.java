@@ -30,23 +30,16 @@ public class Fibonacci {
         System.out.println(); // Move to the next line after printing the series
     }
 
-    // Main method
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+  public static void main(String[] args) {
+    if (args.length < 1) {
+        System.out.println("Usage: java Fibonacci <number_of_terms>");
+        return;
+    }
 
-        System.out.print("Enter the number of terms: ");
-        int n;
-
-        // Check for valid input
-        while (!scanner.hasNextInt()) {
-            System.out.println("Invalid input. Please enter a valid integer.");
-            scanner.next(); // Clear the invalid input
-            System.out.print("Enter the number of terms: ");
-        }
-
-        n = scanner.nextInt();
+    try {
+        int n = Integer.parseInt(args[0]);
         generateFibonacci(n);
-
-        scanner.close();
+    } catch (NumberFormatException e) {
+        System.out.println("Please enter a valid integer.");
     }
 }
